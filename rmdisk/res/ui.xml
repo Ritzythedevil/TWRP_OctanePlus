@@ -3334,11 +3334,11 @@
 					<action function="set">tw_fm_isfolder=0</action>
 					<action function="set">tw_image_type=none</action>
 					<action function="cmd">
-					i=/sdcard/TWRP/flashify;
+					i=/emmc/TWRP/flashify;
 					rm $i/boot*.img $i/*recovery*.img $i/radio*.img $i/modem*.img;
 					</action>
 					<action function="set">tw_back=install_image</action>
-					<action function="set">tw_filecheck=/sdcard/TWRP/flashify/flashify.zip</action>
+					<action function="set">tw_filecheck=/emmc/TWRP/flashify/flashify.zip</action>
 					<action function="set">tw_existpage=flash_image_confirm</action>
 					<action function="set">tw_notexistpage=flash_image_confirm</action>
 					<action function="page">filecheck</action>
@@ -3919,11 +3919,11 @@
 				<text></text>
 				<image resource="btn_raised_installscript" />
 				<action function="cmd">
-				mkdir "/sdcard/TWRP/flashify";					
+				mkdir "/emmc/TWRP/flashify";					
 				mkdir "/cache/twrp";
-				unzip -o "/sdcard/TWRP/theme/ui.zip" -d "/cache/twrp";
-				cp -r /cache/twrp/flashify/* /sdcard/TWRP/flashify;
-				chmod 777 "/sdcard/TWRP/flashify/flashify.zip";
+				unzip -o "/emmc/TWRP/theme/ui.zip" -d "/cache/twrp";
+				cp -r /cache/twrp/flashify/* /emmc/TWRP/flashify;
+				chmod 777 "/emmc/TWRP/flashify/flashify.zip";
 				rm -r /cache/twrp;
 				</action>
 				<action function="set">tw_fileexists=1</action>
@@ -3979,7 +3979,7 @@
 				<actions>
 					<action function="queueclear"></action>
 					<action function="cmd">
-					cp &quot;%tw_filename%&quot; /sdcard/TWRP/flashify/%tw_image_type%.img;
+					cp &quot;%tw_filename%&quot; /emmc/TWRP/flashify/%tw_image_type%.img;
 					</action>
 					<action function="set">tw_filename=/sdcard/TWRP/flashify/flashify.zip</action>
 					<action function="queuezip"></action>
@@ -11786,8 +11786,8 @@
 				<actions>
 					<action function="cmd">
 					mkdir "/cache/twrp";
-					if [ -f "/sdcard/TWRP/theme/ui.zip" ];
-					then unzip -o "/sdcard/TWRP/theme/ui.zip" -d "/cache/twrp";
+					if [ -f "/emmc/TWRP/theme/ui.zip" ];
+					then unzip -o "/emmc/TWRP/theme/ui.zip" -d "/cache/twrp";
 					chmod 777 "/cache/twrp/zip";
 					cp -r /cache/twrp/%tw_folder%/* "/cache/twrp/images";
 					busybox mv "/cache/twrp/ui.xml" "/cache/twrp/ui_temp.xml";
@@ -11796,7 +11796,7 @@
 					busybox sed "s/%text_actionbar%/#%tw_text_actionbar%/g" "/cache/twrp/ui_temp2.xml" > "/cache/twrp/ui.xml";
 					rm -f "/cache/twrp/ui_temp2.xml";
 					cd "/cache/twrp";
-					./zip -0 -r -u "/sdcard/TWRP/theme/ui.zip" *;
+					./zip -0 -r "/emmc/TWRP/theme/ui.zip" *;
 					cd /;
 					rm -r "/cache/twrp"
 					else
@@ -12214,7 +12214,7 @@
 				<text></text>
 				<image resource="db_ok" highlightresource="db_ok_hl" />
 				<actions>
-					<action function="cmd">cp &quot;%tw_filename%&quot; /sdcard/TWRP/theme/ui.zip</action>
+					<action function="cmd">cp &quot;%tw_filename%&quot; /emmc/TWRP/theme/ui.zip</action>
 					<action function="sleep">1000</action>
 					<action function="reload"></action>
 				</actions>
@@ -12524,8 +12524,8 @@
 				<image resource="db_ok" highlightresource="db_ok_hl" />
 				<actions>
 					<action function="cmd">
-					if [ -f "/sdcard/TWRP/theme/ui.zip" ];
-					then rm -f "/sdcard/TWRP/theme/ui.zip";
+					if [ -f "/emmc/TWRP/theme/ui.zip" ];
+					then rm -f "/emmc/TWRP/theme/ui.zip";
 					else
 					rm -f "/int_sd/TWRP/theme/ui.zip";
 					fi
