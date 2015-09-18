@@ -1,1 +1,0 @@
-Custom Recovery based on TWRP for Karbonn Titanium Octane Plus.
